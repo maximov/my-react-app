@@ -10,6 +10,7 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import "./styles/global.css";
+import "./styles/navbar.css";
 import Navbar from "./components/Navbar";
 
 export const links: Route.LinksFunction = () => [
