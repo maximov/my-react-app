@@ -1,5 +1,6 @@
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
+import { useState } from "react";
 
 const user =  {
     name: "Egor",
@@ -8,6 +9,9 @@ const user =  {
 }
 
 export function Welcome() {
+  const [isClicked, setIsClicked] = useState(false);
+
+
   return (
     <main className="flex items-center justify-center pt-16 pb-4">
       <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
@@ -31,9 +35,10 @@ export function Welcome() {
               What&apos;s next? 
               Привет, {user.name}!
               {user.isBusy ? "Админ занят, не трогайте его" : "Дозволяю войти"}
-              <button>
-                
+              <button className={`p-3 rounded-md ${isClicked ? "bg-green-500" : "bg-red-500" }`} onClick={() => setIsClicked(!isClicked)}>
+                  {isClicked ? "Тыкнуть админа" : "Оставить админа в покое"}
               </button>
+              {user.age>=18 ? "Проходите!" : "Вход воспрещен"}
             </p>
             <ul>
               {resources.map(({ href, text, icon }) => (

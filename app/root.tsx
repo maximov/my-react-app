@@ -11,7 +11,11 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import "./styles/global.css";
 import "./styles/navbar.css";
+import "./styles/theme.css";
 import Navbar from "./components/Navbar";
+import "./components/ThemeSwitcher"
+import ThemeSwitcher from "./components/ThemeSwitcher";
+
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -37,6 +41,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Navbar />
+        <ThemeSwitcher />
         {children}
         <ScrollRestoration />
         <Scripts />
