@@ -16,7 +16,7 @@ export default function ThemeSwitcher() {
             }
             else {                
                 document.documentElement.classList.remove("dark");
-                localStorage.setItem("theme", "ligth");
+                localStorage.setItem("theme", "light");
             }
 
         }, [isDark]

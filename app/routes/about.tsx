@@ -10,11 +10,15 @@ import Leonid from "../assets/6.jpg"
 import Anastasiya from "../assets/7.jpg"
 import Egor from "../assets/8.jpg"
 
+
 type AboutData = {
   title: string;
   description: string;
   team: {name: string; role: string; image: string}[];
+  reviewers: {name: string; feedback: string; image: string}[];
 }
+
+
 
 export function loader(): AboutData {
   return {
@@ -29,9 +33,20 @@ export function loader(): AboutData {
       {name: "Леонид", role: "FullStack", image: Leonid},
       {name: "Анастасия", role: "Преподаватель", image: Anastasiya},
       {name: "Егор", role: "FullStack", image: Egor},
-    ]
+    ],
+    reviewers: [
+      {name: "Ксения2", feedback: "Frontend", image: Ksenia},
+      {name: "Андрей2", feedback: "Инженер", image: Andrey},
+      {name: "Артем2", feedback: "Инженер", image: Artem},
+      {name: "Вячеслав2", feedback: "Инженер 1 категории", image: Vyacheslav},
+      {name: "Виктор2", feedback: "Системный архитектор", image: Viktor},
+      {name: "Леонид2", feedback: "FullStack", image: Leonid},
+      {name: "Анастасия2", feedback: "Преподаватель", image: Anastasiya},
+      {name: "Егор2", feedback: "FullStack", image: Egor},
+    ],
   }
 }
+
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -44,6 +59,7 @@ export default function About() {
   const data = useLoaderData() as AboutData;
 
   return (
+
     <section className="min-h-screen flex flex-col items-center justify-center">
       {/* Здесь заголовок */}
       <div className="text-center mb-10">
@@ -76,7 +92,31 @@ export default function About() {
         ))}
       </ul>
 
+      <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
+        Отзывы
+      </h2>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl px-4">
+        {data.reviewers.map((member, index) => (
+          <li style={{ animationDelay: `${index * 0.2}s` }} key={index} className="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow animation-fade-in">
+            <img 
+              src={`${member.image}`}
+              className="w-24 h-24 rounded-full mb-4 object-cover shadow-md border-2 border-gray-300 dark:border-gray-600"
+              alt={member.name}
+            />
+            <strong className="text-lg font-medium text-gray-900 dark:text-white">
+              {member.name}
+            </strong>
+            <span className="text-gray-700 dark:dark:text-gray-300">
+              {member.feedback}
+            </span>            
+          </li>
+        ))}
+      </ul>
+
     </section>
+    
+
+    
   )
 }
 
