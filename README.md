@@ -82,6 +82,34 @@ Make sure to deploy the output of `npm run build`
 
 This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
 
+### TailwindCSS Cheat Sheet:
+
+- от Nerf: 
+https://nerdcave.com/tailwind-cheat-sheet
+
+    Удобный список всех классов с фильтрацией по категориям (например, padding, margin, background).
+Пример: Ищешь rounded — находишь все варианты (rounded-sm, rounded-md, rounded-lg и т.д.).
+
+- от Tailwind Toolbox: https://tailwindtoolbox.com/cheatsheet
+
+    Простая таблица с классами и их описанием.
+
+### Интерактивные инструменты:
+
+Есть сайты, где ты можешь экспериментировать с классами TailwindCSS и сразу видеть результат:
+
+- Tailwind Play: https://play.tailwindcss.com/
+Официальная онлайн-песочница от TailwindCSS. Ты можешь писать HTML с классами Tailwind и сразу видеть, как они работают.
+
+- TailwindCSS Visual Editor: https://tailwind.run/
+    Позволяет визуально экспериментировать с классами.
+
+### Расширения для редакторов кода
+
+Установи расширение в VS Code: TailwindCSS IntelliSense.
+
+После установки, когда ты начинаешь писать класс (например, p-), расширение будет предлагать автодополнение (p-1, p-2, p-3 и т.д.) с описанием.
+Также показывает цвета (bg-gray-200) прямо в редакторе в виде цветного индикатора.
 ---
 
 Built with ❤️ using React Router.

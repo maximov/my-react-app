@@ -3,7 +3,10 @@ import { data } from "react-router";
 
 export default function ThemeSwitcher() {
     const [isDark, setIsDark] = useState(() => {
-        return localStorage.getItem("theme") === "dark";
+        if (typeof window !== "undefined" && localStorage.getItem("theme")) {
+            return localStorage.getItem("theme") === "dark";
+        }
+        return false;
     })
 
     useEffect(() => {
