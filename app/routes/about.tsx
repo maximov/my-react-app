@@ -36,8 +36,14 @@ export default function About() {
   const data = useLoaderData() as AboutData;
 
   return (
-    <section className="about-container">
-      <h1>{data.title}</h1>
+    <section className="min-h-screen flex flex-col items-center justify-center">
+      {/* Здесь заголовок */}
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          {data.title}
+        </h1>
+      </div>
+      
       <p>{data.description}</p>
       <h2>Наша команда</h2>
       <ul>
