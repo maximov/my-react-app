@@ -23,7 +23,8 @@ export default function ThemeSwitcher() {
     );
 
     return (
-        <button onClick={() => setIsDark(!isDark)}>
+        <button onClick={() => setIsDark(!isDark)}
+         className="p-2 bg-gray-200 dark:bg-gray-700 dark:text-white rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
             {isDark ? "Светлая тема" : "Темная тема"}
         </button>
     )
