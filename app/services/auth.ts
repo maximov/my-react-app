@@ -22,6 +22,8 @@ export async function checkAuth() {
 }
 
 export function isAuthenticated(): boolean {
+    if (typeof window !== "undefined")
+        console.log(!!localStorage.getItem("token"))
     return typeof window !== "undefined" && !!localStorage.getItem("token");
 }
 
