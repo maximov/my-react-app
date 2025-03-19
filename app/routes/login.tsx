@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../services/auth";
+import { login } from "~/store/authSlice";
+//import { login } from "../services/auth";
+import { useAppDispatch, useAppSelector } from "~/store/hook";
+
 
 export default function LoginPage(){
+    const dispatch = useAppDispatch();
+    
+    const isAuth = useAppSelector((state) => state.auth.isAuth)
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -11,12 +18,14 @@ export default function LoginPage(){
     function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
         if (username === "admin" && password === "admin"){
-            login();
+            localStorage.setItem("token", "mytoken")
+            dispatch(login("mytoken"));
+            //login();
             navigate("/private");
         } else {
             alert("Неправильный логин или пароль");
         }
-    }
+    }    
 
     return (
         <div>

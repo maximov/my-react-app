@@ -3,8 +3,10 @@ import ThemeSwitcher from "./ThemeSwitcher";
 import { isAuthenticated, logout } from "../services/auth";
 
 
+
 export default function Navbar(){
     const navigate = useNavigate();
+
 
     function handleLogout(){
         logout();
