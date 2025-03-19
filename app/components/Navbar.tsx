@@ -5,7 +5,7 @@ import { isAuthenticated, logout } from "../services/auth";
 
 export default function Navbar(){
     const navigate = useNavigate();
-    
+
     function handleLogout(){
         logout();
         navigate("/");
@@ -21,7 +21,7 @@ export default function Navbar(){
                     <li><NavLink to="/contacts">Контакты</NavLink></li>   
                     <li><NavLink to="/vacancies">Вакансии</NavLink></li>
                     {isAuthenticated() ? (
-                        <li><button>Выйти</button></li>
+                        <button style={{ color: "white" }} onClick={handleLogout}>Выйти</button>
                     ) : (
                         <li><NavLink to="/login">Войти</NavLink></li>
                     )}
