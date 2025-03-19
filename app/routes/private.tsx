@@ -1,6 +1,7 @@
 import type { Route } from "./+types/home";
 import React from "react";
-import { checkAuth } from "../services/auth";
+import { checkAuth, isAuthenticated } from "../services/auth";
+import { Navigate } from "react-router-dom";
 
 interface UserDate {
     name: string,
@@ -14,8 +15,11 @@ interface LoderData {
 
 
 export default function PrivatePage(){    
-    checkAuth()
+    //checkAuth()
     // const data = "какая-то функция загрузчика"
+    if (!isAuthenticated()){
+        return <Navigate to="/" replace />
+    }
     return (
         <section className="p-4">
             <h1 className="text-2xl font-bold mb-4">Приватная информация</h1>

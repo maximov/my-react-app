@@ -22,10 +22,7 @@ export async function checkAuth() {
 }
 
 export function isAuthenticated(): boolean {
-    if (typeof window !== "undefined" && localStorage.getItem("token")) {
-        return !!localStorage.getItem("token");
-    }
-    return false;
+    return typeof window !== "undefined" && !!localStorage.getItem("token");
 }
 
 export function login() {
