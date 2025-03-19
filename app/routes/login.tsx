@@ -1,17 +1,32 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "~/store/authSlice";
+import { login } from "../store/authSlice";
 //import { login } from "../services/auth";
-import { useAppDispatch, useAppSelector } from "~/store/hook";
+import { useAppDispatch, useAppSelector } from "../store/hook";
+import { createRoot } from 'react-dom/client';
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { store } from "../store/store";
+import RootRoutes from "../root";
 
 
 export default function LoginPage(){
-    const dispatch = useAppDispatch();
+    const root = createRoot(document.getElementById('root') as HTMLElement);
+    root.render(
+        <React.StrictMode>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <RootRoutes />
+                </BrowserRouter>
+            </Provider>
+        </React.StrictMode>
+    );
+    const dispatch = useAppDispatch();    
     
     const isAuth = useAppSelector((state) => state.auth.isAuth)
 
     const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState("");    
 
     const navigate = useNavigate();
 

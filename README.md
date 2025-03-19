@@ -112,4 +112,12 @@ https://nerdcave.com/tailwind-cheat-sheet
 
 ---
 
-Built with ❤️ using React Router.
+Чат: t.me/react_vite
+
+Доработка:
+- кнопки смены темы
+- входа во вкладку Контакты
+(инструкция)
+- данные из внешнего API 
+- Redux
+- Flux

@@ -2,7 +2,7 @@ import type { Route } from "./+types/home";
 import React from "react";
 import { checkAuth, isAuthenticated } from "../services/auth";
 import { Navigate } from "react-router-dom";
-import { useAppSelector } from "~/store/hook";
+import { useAppSelector } from "../store/hook";
 
 
 interface UserDate {

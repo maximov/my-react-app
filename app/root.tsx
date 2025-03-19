@@ -1,4 +1,5 @@
 import {
+  BrowserRouter,
   isRouteErrorResponse,
   Links,
   Meta,
@@ -20,6 +21,8 @@ import "./components/ThemeSwitcher"
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import routes from "./routes";
 import { isAuthenticated } from "./services/auth";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 
 export const links: Route.LinksFunction = () => [
@@ -44,15 +47,28 @@ const publicPath = [
   "/home",
 ]
 
+function RootRoutes(){
+  const element = useRoutes(routes as any);
+  return <Layout>{element}</Layout>
+}
+
 export function Root(){
   //const element = useRoutes(routes);
-  const location = useLocation();
-  const currentPath = location.pathname;
+  //const location = useLocation();
+  //const currentPath = location.pathname;
 
-  if (!isAuthenticated() && !publicPath.includes(currentPath))
-    return <Navigate to="/" replace />
+  //if (!isAuthenticated() && !publicPath.includes(currentPath))
+  //  return <Navigate to="/" replace />
   
-  return useRoutes(routes as any)
+  //return useRoutes(routes as any)
+
+  return (
+    <Provider store={store}>
+        <BrowserRouter>
+          <RootRoutes />
+        </BrowserRouter>
+    </Provider>
+  );
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
