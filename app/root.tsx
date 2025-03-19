@@ -40,8 +40,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Navbar />
-        <ThemeSwitcher />
+        <Navbar />       
         {children}
         <ScrollRestoration />
         <Scripts />
