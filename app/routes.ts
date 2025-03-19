@@ -9,6 +9,7 @@ export default [
     route("/docs", "routes/docs.tsx"),
     route("/contacts", "routes/contacts.tsx"),
     route("/vacancies", "routes/vacancies.tsx"),   
-    route("/private", "routes/private.tsx"),  
+    route("/private", "routes/private.tsx"),   
+    route("/login", "routes/login.tsx"),  
     
 ] satisfies RouteConfig;
