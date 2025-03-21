@@ -1,3 +1,4 @@
+// Импорт компонентов и хуков маршрутизации из react-router-dom
 import {
   BrowserRouter,
   isRouteErrorResponse,
@@ -7,7 +8,6 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLocation,
   useRoutes,
 } from "react-router-dom";
 
@@ -16,15 +16,15 @@ import "./app.css";
 import "./styles/global.css";
 import "./styles/navbar.css";
 import "./styles/theme.css";
+
 import Navbar from "./components/Navbar";
-import "./components/ThemeSwitcher"
 import ThemeSwitcher from "./components/ThemeSwitcher";
-import routes from "./routes";
-import { isAuthenticated } from "./services/auth";
-import { Provider } from "react-redux";
+import routes from "./routes"; 
+import { isAuthenticated } from "./services/auth"; 
+import { Provider } from "react-redux"; 
 import { store } from "./store/store";
 
-
+// Ссылки, добавляемые в <head> (шрифты и т.п.)
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -38,6 +38,7 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+// Пути, доступные без авторизации
 const publicPath = [
   "/",
   "/about",
@@ -45,32 +46,26 @@ const publicPath = [
   "/contacts",
   "/vacancies",
   "/home",
-]
+];
 
-function RootRoutes(){
-  const element = useRoutes(routes as any);
-  return <Layout>{element}</Layout>
+// Компонент маршрутов, отрисовывающий маршруты с помощью useRoutes
+function RootRoutes() {
+  const element = useRoutes(routes as any); // `routes` — массив маршрутов
+  return <Layout>{element}</Layout>; // Оборачиваем в макет
 }
 
-export function Root(){
-  //const element = useRoutes(routes);
-  //const location = useLocation();
-  //const currentPath = location.pathname;
-
-  //if (!isAuthenticated() && !publicPath.includes(currentPath))
-  //  return <Navigate to="/" replace />
-  
-  //return useRoutes(routes as any)
-
+// Корневой компонент приложения
+export function Root() {
   return (
     <Provider store={store}>
-        <BrowserRouter>
-          <RootRoutes />
-        </BrowserRouter>
+      <BrowserRouter>
+        <RootRoutes />
+      </BrowserRouter>
     </Provider>
   );
 }
 
+// Макет приложения: обертка над контентом страниц
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -78,22 +73,24 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
-        <Links />
+        <Links /> 
       </head>
       <body>
-        <Navbar />       
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+        <Navbar />
+        {children} 
+        <ScrollRestoration /> 
+        <Scripts /> 
       </body>
     </html>
   );
 }
 
+// Компонент Outlet нужен для вложенных маршрутов
 export default function App() {
   return <Outlet />;
 }
 
+// Обработка ошибок маршрутов
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";
   let details = "An unexpected error occurred.";
@@ -105,7 +102,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       error.status === 404
         ? "The requested page could not be found."
         : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
+  } else if (import.meta.env.DEV && error instanceof Error) {
     details = error.message;
     stack = error.stack;
   }
